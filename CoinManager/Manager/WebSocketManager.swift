@@ -10,7 +10,7 @@ import Combine
 
 final class WebSocketManager: NSObject {
     static let shared = WebSocketManager()
-    private let upbitSocketURL = "wss://api.upbit.com/websocket/v1"
+    private let upbitSocketURL = URLs.upbitSocketURL
     
     private override init() {
         super.init()
@@ -24,7 +24,6 @@ final class WebSocketManager: NSObject {
     func openWebSocket() {
         if let url = URL(string: self.upbitSocketURL) {
             let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
-            // -> URLSessionWebSocketDelegate 프로토콜 채택
             webSocket = session.webSocketTask(with: url)
             webSocket?.resume()
             
