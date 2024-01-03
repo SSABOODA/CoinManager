@@ -43,7 +43,15 @@ final class WebSocketManager: NSObject {
     
     func send(_ codes: String) {
         let requestStr = """
-        [{"ticket":"test"},{"type":"orderbook","codes":["\(codes)"]}]
+        [
+            {
+                "ticket": "test"
+            },
+            {
+                "type": "orderbook",
+                "codes":["\(codes)"]
+            }
+        ]
         """
         
         webSocket?.send(.string(requestStr), completionHandler: { error  in

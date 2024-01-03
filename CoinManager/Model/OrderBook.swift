@@ -31,3 +31,9 @@ struct OrderbookUnit: Codable {
         case bidSize = "bid_size"
     }
 }
+
+struct OrderBookItem: Hashable, Identifiable {
+    let id = UUID()
+    let price: Double
+    let size: Double
+}

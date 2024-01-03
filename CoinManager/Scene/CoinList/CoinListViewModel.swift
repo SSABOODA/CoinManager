@@ -7,20 +7,25 @@
 
 import Foundation
 
-class CoinListViewModel: ObservableObject {
+final class CoinListViewModel: ObservableObject {
     
-    @Published var market = [
-        Market(market: "1", koreanName: "1번", englishName: "num 1"),
-        Market(market: "2", koreanName: "2번", englishName: "num 2"),
-        Market(market: "3", koreanName: "3번", englishName: "num 3")
+    @Published var market: [Market] = [
+//        Market(market: "1", koreanName: "1번", englishName: "num 1"),
+//        Market(market: "2", koreanName: "2번", englishName: "num 2"),
+//        Market(market: "3", koreanName: "3번", englishName: "num 3")
     ]
     
+    @Published var filterMarket: [Market]? = []
+    
+    init() {
+        self.fetchAllMarket()
+        self.filterMarket = market
+    }
+    
     func fetchAllMarket() {
-        
         guard let url = URL(string: URLs.upbitCoinListURL) else { return }
         
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let data = data else {
                 print("데이터 응답 없음")
                 return
@@ -28,14 +33,14 @@ class CoinListViewModel: ObservableObject {
             
             do {
                 let decodedData = try JSONDecoder().decode([Market].self, from: data)
-                
                 DispatchQueue.main.async {
                     self?.market = decodedData
+                    self?.filterMarket = self?.market
                 }
             } catch {
                 print(error)
             }
-            
-        }.resume()
+        }
+        task.resume()
     }
 }

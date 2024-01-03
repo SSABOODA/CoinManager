@@ -9,10 +9,16 @@
 /* Begin PBXBuildFile section */
 		F71D740D2B44543600C24CCE /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D740C2B44543600C24CCE /* WebSocketManager.swift */; };
 		F71D74102B44559700C24CCE /* OrderBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D740F2B44559700C24CCE /* OrderBook.swift */; };
-		F71D74142B4459F900C24CCE /* ConListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D74132B4459F900C24CCE /* ConListView.swift */; };
+		F71D74142B4459F900C24CCE /* CoinListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D74132B4459F900C24CCE /* CoinListView.swift */; };
 		F71D74162B445A3E00C24CCE /* CoinListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D74152B445A3E00C24CCE /* CoinListViewModel.swift */; };
 		F71D74182B445A5C00C24CCE /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D74172B445A5C00C24CCE /* Market.swift */; };
 		F71D741D2B445AA200C24CCE /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D741C2B445AA200C24CCE /* URL.swift */; };
+		F71D74202B445E8000C24CCE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D741F2B445E8000C24CCE /* MainView.swift */; };
+		F71D74222B4460AC00C24CCE /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D74212B4460AC00C24CCE /* MainViewModel.swift */; };
+		F71D74292B452A8500C24CCE /* CoinAskingPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D74282B452A8500C24CCE /* CoinAskingPriceView.swift */; };
+		F71D742B2B452A9100C24CCE /* CoinAskingPriceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D742A2B452A9100C24CCE /* CoinAskingPriceViewModel.swift */; };
+		F71D742D2B452BB200C24CCE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D742C2B452BB200C24CCE /* Color.swift */; };
+		F71D74302B452F5600C24CCE /* Extension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71D742F2B452F5600C24CCE /* Extension+Color.swift */; };
 		F76238332B44377C0025C0F6 /* CoinManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76238322B44377C0025C0F6 /* CoinManagerApp.swift */; };
 		F76238352B44377C0025C0F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76238342B44377C0025C0F6 /* ContentView.swift */; };
 		F76238372B44377D0025C0F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F76238362B44377D0025C0F6 /* Assets.xcassets */; };
@@ -42,10 +48,16 @@
 /* Begin PBXFileReference section */
 		F71D740C2B44543600C24CCE /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
 		F71D740F2B44559700C24CCE /* OrderBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBook.swift; sourceTree = "<group>"; };
-		F71D74132B4459F900C24CCE /* ConListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConListView.swift; sourceTree = "<group>"; };
+		F71D74132B4459F900C24CCE /* CoinListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListView.swift; sourceTree = "<group>"; };
 		F71D74152B445A3E00C24CCE /* CoinListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListViewModel.swift; sourceTree = "<group>"; };
 		F71D74172B445A5C00C24CCE /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		F71D741C2B445AA200C24CCE /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		F71D741F2B445E8000C24CCE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F71D74212B4460AC00C24CCE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		F71D74282B452A8500C24CCE /* CoinAskingPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinAskingPriceView.swift; sourceTree = "<group>"; };
+		F71D742A2B452A9100C24CCE /* CoinAskingPriceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinAskingPriceViewModel.swift; sourceTree = "<group>"; };
+		F71D742C2B452BB200C24CCE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F71D742F2B452F5600C24CCE /* Extension+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Color.swift"; sourceTree = "<group>"; };
 		F762382F2B44377B0025C0F6 /* CoinManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F76238322B44377C0025C0F6 /* CoinManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinManagerApp.swift; sourceTree = "<group>"; };
 		F76238342B44377C0025C0F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +115,8 @@
 		F71D74112B4459DF00C24CCE /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				F71D74272B452A4E00C24CCE /* CoinAskingPrice */,
+				F71D741E2B445E5E00C24CCE /* Main */,
 				F71D74122B4459E700C24CCE /* CoinList */,
 			);
 			path = Scene;
@@ -111,7 +125,7 @@
 		F71D74122B4459E700C24CCE /* CoinList */ = {
 			isa = PBXGroup;
 			children = (
-				F71D74132B4459F900C24CCE /* ConListView.swift */,
+				F71D74132B4459F900C24CCE /* CoinListView.swift */,
 				F71D74152B445A3E00C24CCE /* CoinListViewModel.swift */,
 			);
 			path = CoinList;
@@ -121,8 +135,35 @@
 			isa = PBXGroup;
 			children = (
 				F71D741C2B445AA200C24CCE /* URL.swift */,
+				F71D742C2B452BB200C24CCE /* Color.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		F71D741E2B445E5E00C24CCE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F71D741F2B445E8000C24CCE /* MainView.swift */,
+				F71D74212B4460AC00C24CCE /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F71D74272B452A4E00C24CCE /* CoinAskingPrice */ = {
+			isa = PBXGroup;
+			children = (
+				F71D74282B452A8500C24CCE /* CoinAskingPriceView.swift */,
+				F71D742A2B452A9100C24CCE /* CoinAskingPriceViewModel.swift */,
+			);
+			path = CoinAskingPrice;
+			sourceTree = "<group>";
+		};
+		F71D742E2B452F4D00C24CCE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F71D742F2B452F5600C24CCE /* Extension+Color.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		F76238262B44377B0025C0F6 = {
@@ -148,6 +189,7 @@
 		F76238312B44377C0025C0F6 /* CoinManager */ = {
 			isa = PBXGroup;
 			children = (
+				F71D742E2B452F4D00C24CCE /* Extension */,
 				F71D741B2B445A9700C24CCE /* Constant */,
 				F71D74112B4459DF00C24CCE /* Scene */,
 				F71D740E2B44558700C24CCE /* Model */,
@@ -315,13 +357,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F71D74142B4459F900C24CCE /* ConListView.swift in Sources */,
+				F71D74142B4459F900C24CCE /* CoinListView.swift in Sources */,
+				F71D74202B445E8000C24CCE /* MainView.swift in Sources */,
 				F76238352B44377C0025C0F6 /* ContentView.swift in Sources */,
 				F71D74182B445A5C00C24CCE /* Market.swift in Sources */,
+				F71D742D2B452BB200C24CCE /* Color.swift in Sources */,
 				F71D74102B44559700C24CCE /* OrderBook.swift in Sources */,
+				F71D74222B4460AC00C24CCE /* MainViewModel.swift in Sources */,
+				F71D74292B452A8500C24CCE /* CoinAskingPriceView.swift in Sources */,
 				F71D74162B445A3E00C24CCE /* CoinListViewModel.swift in Sources */,
+				F71D74302B452F5600C24CCE /* Extension+Color.swift in Sources */,
 				F76238332B44377C0025C0F6 /* CoinManagerApp.swift in Sources */,
 				F71D740D2B44543600C24CCE /* WebSocketManager.swift in Sources */,
+				F71D742B2B452A9100C24CCE /* CoinAskingPriceViewModel.swift in Sources */,
 				F71D741D2B445AA200C24CCE /* URL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct ConListView: View {
+struct CoinListView: View {
     
     @ObservedObject var viewModel = CoinListViewModel()
+    @State var searchQueryString = ""
     
     var body: some View {
-        
         LazyVStack {
-            ForEach(viewModel.market, id: \.self) { item in
+            ForEach(viewModel.filterMarket ?? [], id: \.self) { item in
                 NavigationLink(value: item) {
                     HStack {
                         VStack(alignment: .leading) {
@@ -31,21 +31,38 @@ struct ConListView: View {
                         Text(item.market)
                             .foregroundStyle(.black)
                     }
-                    .padding(18)
+                    .padding(20)
                 }
             }
-        }
+        } // LazyVStack
         .onAppear {
             viewModel.fetchAllMarket()
         }
-        .navigationDestination(for: Market.self) { item  in
-
-//            let viewModel = SocketTestViewModel(market: item)
-//            SocketTestView(viewModel: viewModel)
+        .navigationDestination(for: Market.self) { item in
+            let viewModel = CoinAskingPriceViewModel(market: item)
+            CoinAskingPriceView(viewModel: viewModel)
+        }
+        .searchable(
+            text: $searchQueryString,
+            placement: .navigationBarDrawer,
+            prompt: "코인명, 심볼 검색"
+        )
+        .onChange(of: searchQueryString) { newValue in
+            self.viewModel.filterMarket = self.searchResults
+        }
+    } // body
+    
+    var searchResults: [Market] {
+        if searchQueryString.isEmpty {
+            return viewModel.market
+        } else {
+            return viewModel.market.filter {
+                $0.koreanName.contains(searchQueryString) || $0.englishName.contains(searchQueryString)
+            }
         }
     }
 }
 
 #Preview {
-    ConListView()
+    CoinListView()
 }
