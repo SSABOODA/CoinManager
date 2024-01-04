@@ -14,31 +14,88 @@ struct CoinListView: View {
     
     var body: some View {
         LazyVStack {
-            ForEach(viewModel.filterMarket ?? [], id: \.self) { item in
+            VStack {
+                HStack {
+                    HStack {
+                        Text("코인명")
+                            .font(.system(size: 13))
+                    }
+                    .background(.blue)
+                    Spacer()
+                    HStack {
+                        Text("현재가")
+                            .font(.system(size: 13))
+                        Text("전일대비")
+                            .font(.system(size: 13))
+                        Text("거래대금")
+                            .font(.system(size: 13))
+                    }
+                    .background(.red)
+                    
+                }
+                .frame(height: 5)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 5)
+                Divider()
+                    .frame(height: 1)
+                    .padding(.horizontal, 30)
+                    .background(Color.gray)
+            }
+            
+            ForEach(viewModel.filterMarket, id: \.self) { item in
                 NavigationLink(value: item) {
                     HStack {
                         VStack(alignment: .leading) {
-                            
-                            Text(item.koreanName)
+                            Text("\(item.koreanName)")
                                 .fontWeight(.bold)
                                 .foregroundStyle(.black)
-                            
-                            Text(item.englishName)
-                                .font(.caption)
+                                .font(.system(size: 15))
+                            Text(item.market)
                                 .foregroundStyle(.gray)
+                                .font(.system(size: 13))
+                                
                         }
                         Spacer()
-                        Text(item.market)
-                            .foregroundStyle(.black)
+                        VStack {
+                            Text("58,000,000")
+                                .foregroundStyle(.black)
+                                .font(.callout)
+                            Text("")
+                        }
+                        
+                        VStack {
+                            Text("-0.48%")
+                                .foregroundStyle(.black)
+                                .font(.callout)
+                            Text("30.00")
+                                .foregroundStyle(.black)
+                                .font(.caption)
+                        }
+                        
+                        VStack {
+                            Text("986,050백만")
+                                .foregroundStyle(.black)
+                                .font(.callout)
+                            Text("")
+                        }
+                        
+                        
                     }
-                    .padding(20)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 5)
                 }
+                Divider()
+                    .frame(height: 0.5)
+                    .padding(.horizontal, 30)
+                    .background(Color.gray)
             }
+            
         } // LazyVStack
         .onAppear {
             viewModel.fetchAllMarket()
         }
         .navigationDestination(for: Market.self) { item in
+            
             let viewModel = CoinAskingPriceViewModel(market: item)
             CoinAskingPriceView(viewModel: viewModel)
         }

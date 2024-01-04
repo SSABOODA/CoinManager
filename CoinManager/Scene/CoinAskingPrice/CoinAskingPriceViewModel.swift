@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class CoinAskingPriceViewModel: ObservableObject {
-    var marketData: Market
+    var marketData: MarketDTO
     
     @Published var askOrderBook: [OrderBookItem] = []
     @Published var bidOrderBook: [OrderBookItem] = []
@@ -17,7 +17,9 @@ final class CoinAskingPriceViewModel: ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     
     init(market: Market) {
-        self.marketData = market
+        
+        let marketDTO = market.translateToDTO(tradePrice: 0, change: "")
+        self.marketData = marketDTO
         
         WebSocketManager.shared.openWebSocket()
         WebSocketManager.shared.send(marketData.market)
@@ -36,6 +38,8 @@ final class CoinAskingPriceViewModel: ObservableObject {
                     .sorted { $0.price > $1.price }
             }
             .store(in: &cancellable)
+        
+        self.fetchTickerInfo()
     }
     
     deinit {
@@ -50,5 +54,16 @@ final class CoinAskingPriceViewModel: ObservableObject {
     func largestBidSize() -> Double {
         let data = bidOrderBook.sorted(by: { $0.size > $1.size })
         return data.first?.size ?? 0
+    }
+    
+    func fetchTickerInfo() {
+        let urlString = "https://api.upbit.com/v1/ticker?markets=\(self.marketData.market)"
+        NetworkManager.shared.fetchData(
+            urlSting: urlString,
+            type: TickerData.self) { [weak self] data in
+                guard let ticker = data.first else { return }
+                self?.marketData.change = ticker.change
+                self?.marketData.tradePrice = ticker.tradePrice
+            }
     }
 }

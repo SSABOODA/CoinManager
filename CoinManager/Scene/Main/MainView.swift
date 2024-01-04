@@ -21,6 +21,7 @@ struct MainView: View {
                 self.viewModel.markets.shuffle()
             }
             .navigationBarTitle("거래소")
+            .navigationBarTitleDisplayMode(.inline)
         }.accentColor(.black) // NavigationStack
     } // body
 }

@@ -7,21 +7,29 @@
 
 import SwiftUI
 
+
 struct CoinAskingPriceView: View {
     
     @StateObject var viewModel = CoinAskingPriceViewModel(
         market: Market(
             market: "KRW-BTC",
             koreanName: "비트코인",
-            englishName: "num 1"
+            englishName: "Bitcoin"
         )
     )
     
     var body: some View {
-        ScrollView {
 
+        HStack {
+            Text("\(viewModel.marketData.tradePrice.formatted())")
+                .padding(20)
+                .foregroundStyle(tradePriceColor)
+            Spacer()
+        }
+        .frame(height: 50)
+        .foregroundColor(.gray)
+        ScrollView {
             GeometryReader { proxy in
-                
                 let graphWidth = proxy.size.width * 0.3
                 
                 VStack(alignment: .center) {
@@ -99,15 +107,58 @@ struct CoinAskingPriceView: View {
                     }
                 }
             }
-            .frame(height : 1440) // 40 * 15 * 2 + 40 + 40
+            .frame(height : 1440)
             
         }
-        .navigationTitle(viewModel.marketData.koreanName)
+        .navigationTitle("\(viewModel.marketData.koreanName) (\(viewModel.marketData.market))")
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(.hidden)
+    }
+    
+    var tradePriceColor: Color {
+        if viewModel.marketData.change == "RISE" {
+            return Color.red
+        } else if viewModel.marketData.change == "EVEN" {
+            return Color.black
+        } else {
+            return Color.blue
+        }
     }
 }
 
 #Preview {
     CoinAskingPriceView()
+}
+
+struct TestView: View {
+    
+    var tapView: TapInfo
+    
+    var body: some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            switch tapView {
+            case .ask:
+                let _ = print("ask")
+                NavigationLink(destination: CoinAskingPriceView()) {
+                    Text("Go to Detail View")
+                }
+            case .chart:
+                let _ = print("chart")
+                NavigationLink(destination: EmptyView()) {
+                    Text("Go to Detail View")
+                }
+            case .price:
+                let _ = print("price")
+                NavigationLink(destination: EmptyView()) {
+                    Text("Go to Detail View")
+                }
+            case .info:
+                let _ = print("info")
+                NavigationLink(destination: EmptyView()) {
+                    Text("Go to Detail View")
+                }
+            }
+        }
+    }
+    
 }

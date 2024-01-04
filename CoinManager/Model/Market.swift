@@ -19,4 +19,44 @@ struct Market: Codable, Hashable {
         case koreanName = "korean_name"
         case englishName = "english_name"
     }
+    
+    func translateToDTO(
+        tradePrice: Double,
+        change: String
+    ) -> MarketDTO {
+        let marketWithPrice = MarketDTO(
+            market: self.market,
+            koreanName: self.koreanName,
+            englishName: self.englishName,
+            tradePrice: tradePrice,
+            change: change
+        )
+        return marketWithPrice
+    }
 }
+
+struct MarketDTO: Hashable {
+    let id = UUID()
+    
+    let market: String
+    let koreanName: String
+    let englishName: String
+    var tradePrice: Double
+    var change: String
+}
+
+
+struct MarketTradePrice: Codable {
+    let change: String
+    let tradePrice: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case change
+        case tradePrice = "trade_price"
+    }
+}
+
+
+typealias TickerData = [MarketTradePrice]
+
+
